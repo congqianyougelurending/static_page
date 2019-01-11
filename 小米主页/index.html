@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>小米商城</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <link rel="shortcut icon" href="https://assets-cdn.github.com/favicon.ico" />
+    <link rel="bookmark" href="https://assets-cdn.github.com/favicon.ico" />
+    <style>
+        @media (max-width: @screen-xs-max) {}
+
+        @media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {}
+
+        @media (min-width: @screen-md-min) and (max-width: @screen-md-max) {}
+
+        @media (min-width: @screen-lg-min) {}
+        .HolyGrail {
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+
+        header,
+        footer {
+            flex: 1;
+        }
+
+        .HolyGrail-body {
+            display: flex;
+            flex: 1;
+        }
+
+        .HolyGrail-content {
+            flex: 1;
+            padding: 0;
+        }
+
+        .HolyGrail-nav, .HolyGrail-ads {
+        /* 两个边栏的宽度设为12em */
+            flex: 0 0 12em;
+        }
+
+        .HolyGrail-nav {
+            /* 导航放到最左边 */
+            order: -1;
+        }
+        * {
+            font-size: 12;
+        }
+        /* a标签默认样式清除 */
+        a,a:link,a:visited,a:hover,a:active { 
+            text-decoration:none;
+            outline: none;
+            color: inherit;
+        }
+        /* flex位置填充 */
+        .header_li_fill {
+            flex: 1 1 15rem;
+        }
+        .header_nav_fill {
+            flex: 1 1 19rem;
+        }
+        .header_nav_fill_mob {
+            flex:1 1 18rem;
+        }
+        ul>li>a {
+            font-size: 1rem;
+            vertical-align: middle;
+        }
+        /* 移动端折叠导航栏
+        #collapsibleNavbar {
+            background-color:rgba(0,0,0,0.1);
+        }
+        .navbar_bgc_li {
+            background-color:rgba(0,0,0,0.1);
+        } */
+        .carousel_ul {
+            position:absolute;
+            top: 0;
+            left: 0;
+            padding-top: 1.5rem;
+            padding-left: 0;
+            padding-right: 0;
+            width: 18.7%;
+            height: 100%;
+            background-color:rgba(0,0,0,0.6);/*背景透明框 */
+        }
+        .carousel_ul_li {
+            padding-left: 3rem;
+            padding-bottom: 0.68rem;
+            color: #fff;
+        }
+        .carousel_ul_li:hover {
+            background-color:#333;
+        }
+        .carousel-inner img {
+            width: 100%;
+            height: 100%;
+        }
+        ul {
+            list-style: none;
+            text-align:left;
+        }
+        .img_flex {
+            max-width: 100%;
+        }
+        .nav_pad {
+            padding-left: .5rem;
+            padding-right: .5rem;
+        }
+        .nav_pad:hover {
+            color: #333;
+        }
+        /* bootstrap默认样式修改 */
+        .carousel-control-prev {
+            left: 15%;
+        }
+        .carousel-control-prev-icon,.carousel-control-next-icon {
+            width: 35px;
+            height: 35px;
+        }
+        .carousel-control-prev-icon:hover,.carousel-control-next-icon:hover{
+            background-color:#333;
+        }
+        .nav_footer_div {
+            padding-top: 1rem;
+        }
+        .nav_footer_div_1 {
+            width: 18.7%;
+            height: 50%;
+            flex-shrink:0;
+        }
+        .nav_footer_div_2 {
+            display: flex;
+            flex-grow:1;
+            width: 100%;
+            max-height:10.6rem;
+            margin-left: 0.8rem;
+        }
+        .nav_footer_ul {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 0;
+            background-color: #5f5750;
+        }
+        .nav_footer_li {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 33%;
+            height: 5.2rem;
+            margin-left: 1;
+        }
+        .shangou_h2 {
+            padding-top: 1.5rem;
+            padding-bottom: 0.5rem;
+        }
+        .shangou {
+            display: flex;
+            flex-wrap: nowrap;
+            height: 20.6rem;
+        }
+        .shangou_ul {
+            display: flex;
+            flex-wrap: nowrap;
+            width: 100%;
+            padding-left: 0;
+            overflow: hidden;
+        }
+        .shougou_ul_li {
+            display: flex;
+            flex:1 0 auto;
+            width: 18.93%;
+            max-height:20.6rem;
+            margin-left: 0.8rem;
+        }
+        .shougou_ul_li:first-child {
+            margin-left: 0;
+        }
+        /* 自动分配伸缩容器剩余空间 */
+        .mob_div_ul {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding-left: 0;
+        }
+        .mob_div_ul_li_01{
+            width: 100%;
+            height: 100%;
+        }
+        .mob_div_ul_li_img_01 {
+            width: 212px;
+            height: auto;
+            
+        }
+        .mob_div_ul_li {
+            display: flex;
+            flex-wrap: wrap;
+            flex: 1 0 auto;
+            width: 216px;
+            height: 300px;
+            margin-left: 0.71rem;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+        .mob_div_ul_li_img {
+            width: 160px;
+            height: 160px;
+            margin: auto;/* 自动居中 */
+        }
+    </style>
+</head>
+
+
+<body id="main" onresize="resize_init()" class="HolyGrail">
+    <div id="header" class="hidden-xs container-fluid d-flex  small bg-dark">
+        <div class="HolyGrail-content d-flex">
+            <div class="d-flex header_nav_link">
+                <a class="nav-link text-muted nav_hide nav_pad" href="#">小米商城</a>
+                <a class="nav-link text-muted nav_hide nav_pad" href="#">MIUI</a>
+                <a class="nav-link text-muted nav_hide nav_pad" href="#">loT</a>
+                <a class="nav-link text-muted nav_hide nav_pad" href="#">云服务</a>
+                <a class="nav-link text-muted nav_hide nav_pad" href="#">金融</a>
+                <a class="nav-link text-muted nav_hide nav_pad" href="#">有品</a>
+                <a class="nav-link text-muted nav_hide nav_pad" href="#">小爱开放平台</a>
+                <a class="nav-link text-muted nav_hide nav_pad" href="#">政企服务</a>
+                <a class="nav-link text-muted nav_hide nav_pad" href="#">资质证照</a>
+                <a class="nav-link text-muted nav_hide nav_pad" href="#">协议规则</a>
+                <a class="nav-link text-muted nav_hide nav_pad" href="#">下载app</a>
+                <a class="nav-link text-muted nav_hide nav_pad" href="#">Select Region</a>
+            </div>
+            <div class="header_li_fill"></div>
+            <div class="d-flex">
+                <a class="nav-link text-muted nav_hide nav_pad" href="#">登录</a>
+                <a class="nav-link text-muted nav_hide nav_pad" href="#">注册</a>
+                <a class="nav-link text-muted nav_hide nav_pad" href="#">消息通知</a>
+                <a class="nav-link text-muted nav_hide nav_pad" href="#">购物车</a>
+            </div>
+        </div>
+        <div id="header_left" class="HolyGrail-nav"></div>
+        <div id="header_right" class="HolyGrail-ads"></div>
+    </div>
+    <div class="HolyGrail-body">
+        <div class="HolyGrail-content container-fluid">
+            <div>
+                <nav id="header_nav" class="navbar navbar-expand-md">
+                    <!-- Links -->
+                    <a class="navbar-brand" href="index.html">
+                        <img src="img/mi-logo.png" alt="logo" style="width:40px;">
+                    </a>
+                    <div id="header_nav_fill_m" class="header_nav_fill_mob"></div>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                        <img src="img/nav_btn.png" class="rounded" alt="@">
+                        <!-- <span class="navbar-toggler-icon"></span> -->
+                    </button>
+                    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                        <ul class="navbar-nav navbar-brand">
+                            <li class="nav-item navbar_bgc_li">
+                                <a class="nav-link" href="#collapsibleNavbar">小米手机</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#collapsibleNavbar">红米</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#collapsibleNavbar">电视</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#collapsibleNavbar">笔记本</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#collapsibleNavbar">家电</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#collapsibleNavbar">新品</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#collapsibleNavbar">路由器</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#collapsibleNavbar">智能硬件</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#collapsibleNavbar">服务</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#collapsibleNavbar">社区</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="header_nav_fill"></div>
+                    <div class="nav_hide input-group input-group-lg">
+                        <input type="text" class="form-control" placeholder="小米8">
+                        <div class="input-group-append">
+                            <button class="btn" type="submit">搜索</button>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+
+            <div>
+                <div id="id_carousel" class="carousel slide carousel_ul_p" data-ride="carousel">
+                    <!-- 指示符 -->
+                    <ul class="carousel-indicators">
+                        <li data-target="#id_carousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#id_carousel" data-slide-to="1"></li>
+                        <li data-target="#id_carousel" data-slide-to="2"></li>
+                        <li data-target="#id_carousel" data-slide-to="3"></li>
+                        <li data-target="#id_carousel" data-slide-to="4"></li>
+                    </ul>
+
+                    <!-- 轮播图片 -->
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="img/carousel-item-01.jpg">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="img/carousel-item-02.jpg">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="img/carousel-item-03.jpg">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="img/carousel-item-04.jpg">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="img/carousel-item-05.jpg">
+                        </div>
+                    </div>
+
+                    <!-- 左右切换按钮 -->
+                    <a class="carousel-control-prev" href="#id_carousel" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    </a>
+                    <a class="carousel-control-next" href="#id_carousel" data-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                    </a>
+                    <div class="carousel_div">
+                        <ul class="carousel_ul small">
+                            <li class="carousel_ul_li"><a href="">手机 电话卡</a></li>
+                            <li class="carousel_ul_li"><a href="">电视 盒子</a></li>
+                            <li class="carousel_ul_li"><a href="">笔记本 平板</a></li>
+                            <li class="carousel_ul_li"><a href="">家电 插线板</a></li>
+                            <li class="carousel_ul_li"><a href="">出行 穿戴</a></li>
+                            <li class="carousel_ul_li"><a href="">智能 路由器</a></li>
+                            <li class="carousel_ul_li"><a href="">电源 配件</a></li>
+                            <li class="carousel_ul_li"><a href="">健康 儿童</a></li>
+                            <li class="carousel_ul_li"><a href="">耳机 音箱</a></li>
+                            <li class="carousel_ul_li"><a href="">生活 箱包</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex nav_footer_div">
+                <div class="nav_footer_div_1">
+                    <ul class="d-flex nav_footer_ul small">
+                        <li class="nav_footer_li"><a href=""><i>选购手机</i></a></li>
+                        <li class="nav_footer_li"><a href=""><i>企业团购</i></a></li>
+                        <li class="nav_footer_li"><a href=""><i>F码通道</i></a></li>
+                        <li class="nav_footer_li"><a href=""><i>米粉卡</i></a></li>
+                        <li class="nav_footer_li"><a href=""><i>以旧换新</i></a></li>
+                        <li class="nav_footer_li"><a href=""><i>话费充值</i></a></li>
+                    </ul>
+                </div>
+                <div class="nav_footer_div_2"><img src="img/nav_footer_div_2_img_1.jpg" class="img_flex" alt="aoh,加载失败，刷新一下"></div>
+                <div class="nav_footer_div_2"><img src="img/nav_footer_div_2_img_2.jpg" class="img_flex" alt="aoh,加载失败，刷新一下"></div>
+                <div class="nav_footer_div_2"><img src="img/nav_footer_div_2_img_3.jpg" class="img_flex" alt="aoh,加载失败，刷新一下"></div>
+            </div>
+            <p class="h2 font-weight-light shangou_h2">小米闪购</p>
+            <div class="shangou ">
+                <ul class="shangou_ul">
+                    <li class="shougou_ul_li"><img class="img-fluid" src="img/shangou_1.png" alt="aoh,加载失败，刷新一下"></li>
+                    <li class="shougou_ul_li"><img class="img-fluid" src="img/shangou_2.png" alt="aoh,加载失败，刷新一下"></li>
+                    <li class="shougou_ul_li"><img class="img-fluid" src="img/shangou_3.png" alt="aoh,加载失败，刷新一下"></li>
+                    <li class="shougou_ul_li data_show_hide_xs"><img class="img-fluid" src="img/shangou_4.png" alt="aoh,加载失败，刷新一下"></li>
+                    <li class="shougou_ul_li data_show_hide"><img class="img-fluid" src="img/shangou_5.png" alt="aoh,加载失败，刷新一下"></li>
+                    <!-- <li class="shougou_ul_li"><img src="img/shangou_6.png" alt="aoh,加载失败，刷新一下"></li>
+                    <li class="shougou_ul_li"><img src="img/shangou_7.png" alt="aoh,加载失败，刷新一下"></li>
+                    <li class="shougou_ul_li"><img src="img/shangou_8.png" alt="aoh,加载失败，刷新一下"></li>
+                    <li class="shougou_ul_li"><img src="img/shangou_9.png" alt="aoh,加载失败，刷新一下"></li>
+                    <li class="shougou_ul_li"><img src="img/shangou_10.png" alt="aoh,加载失败，刷新一下"></li> -->
+                </ul>
+            </div>
+            <p class="h2 font-weight-light mob_h2">手机</p>
+            <div class="d-flex">
+                <ul class="d-flex mob_div_ul">
+                    <li class="mob_div_ul_li_01 data_show_hide"><img src="img/mob_01.jpg" class="mob_div_ul_li_img_01"
+                            alt="aoh,加载失败，刷新一下"></li>
+                </ul>
+                <ul class="d-flex mob_div_ul">
+                    <li class="mob_div_ul_li"><img src="img/mob_02.jpg" class="mob_div_ul_li_img" alt="aoh,加载失败，刷新一下"></li>
+                    <li class="mob_div_ul_li"><img src="img/mob_03.png" class="mob_div_ul_li_img" alt="aoh,加载失败，刷新一下"></li>
+                    <li class="mob_div_ul_li"><img src="img/mob_04.jpg" class="mob_div_ul_li_img" alt="aoh,加载失败，刷新一下"></li>
+                    <li class="mob_div_ul_li"><img src="img/mob_05.jpg" class="mob_div_ul_li_img" alt="aoh,加载失败，刷新一下"></li>
+                    <li class="mob_div_ul_li"><img src="img/mob_06.jpg" class="mob_div_ul_li_img" alt="aoh,加载失败，刷新一下"></li>
+                    <li class="mob_div_ul_li"><img src="img/mob_07.jpg" class="mob_div_ul_li_img" alt="aoh,加载失败，刷新一下"></li>
+                    <li class="mob_div_ul_li"><img src="img/mob_08.jpg" class="mob_div_ul_li_img" alt="aoh,加载失败，刷新一下"></li>
+                    <li class="mob_div_ul_li"><img src="img/mob_09.jpg" class="mob_div_ul_li_img" alt="aoh,加载失败，刷新一下"></li>
+                </ul>
+            </div>
+        </div>
+        <div id="left" class="HolyGrail-nav"></div>
+        <div id="right" class="HolyGrail-ads"></div>
+    </div>
+
+    <div id="footer">
+
+    </div>
+    <script src=" https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"> </script>
+    <script src="https://cdn.staticfile.org/popper.js/1.12.5/umd/popper.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            resize_init();
+        })
+
+        function resize_init() {
+            var text_fill_data = 1600 - screen.availWidth;
+            if (text_fill_data > 350) {
+                $("#header_left").removeClass('HolyGrail-nav');
+                $("#header_right").removeClass('HolyGrail-ads');
+                $(".navbar-toggler").addClass('bg-secondary');
+                $("#header_nav").addClass('bg-secondary');
+                $("#left").removeClass('HolyGrail-nav');
+                $("#right").removeClass('HolyGrail-ads');
+                $(".nav_hide").hide();
+                $("#header>div>a").hide();
+            } else {
+                $("#header_left").addClass('HolyGrail-nav');
+                $("#header_right").addClass('HolyGrail-ads');
+                $(".navbar-toggler").removeClass('bg-secondary');
+                $("#header_nav").removeClass('bg-secondary');
+                $("#left").addClass('HolyGrail-nav');
+                $("#right").addClass('HolyGrail-ads');
+                $(".nav_hide").show();
+                $("#header>div>a").show();
+            };
+            if (text_fill_data > 576) {
+                $('.carousel_div').hide();
+                $('.carousel-control-prev').hide();
+                $('.carousel-control-next').hide();
+            } else {
+                $('.carousel_div').show();
+                $('.carousel-control-prev').show();
+                $('.carousel-control-next').show();
+
+            }
+            if (text_fill_data > 705) {
+                $('.data_show_hide').hide();
+            } else {
+                $('.data_show_hide').show();
+            }
+            if (text_fill_data > 832) {
+                $('.nav_footer_div_1').hide();
+            } else {
+                $('.nav_footer_div_1').show();
+            }
+            if (text_fill_data > 1128) {
+                $("#header_nav_fill_m").removeClass('header_nav_fill_mob');
+                $('#header_nav_fill_m').css('flex:1 1 8rem');
+            } else {
+                $("#header_nav_fill_m").addClass('header_nav_fill_mob');
+                $('#header_nav_fill_m').css(' ');
+            }
+            if (text_fill_data > 1128) {
+                $('.data_show_hide_xs').hide();
+            } else {
+                $('.data_show_hide_xs').show();
+            }
+        }
+    </script>
+</body>
+
+</html>
